@@ -63,7 +63,7 @@
 			position: relative
             text-align: center;
 			font-family: Verdana, Helvetica, Tahoma;
-			font-size: 14px;
+			font-size: 16px;
         }
         #list {
 			position: relative
@@ -77,20 +77,25 @@
             padding:0px;
             margin:0px;
         }
-        
+        li{
+			padding-bottom: 5px;
+		}
 		
         .button {
 			position: relative;
             text-align: center;
-            width: 10%;
+            width: 100px;
             border-radius: 20px;
             background-color: rgba(255, 119, 100, 0.3);
             color: rgb(0, 0, 5);
             left: 200px;
+			padding: 10px;
+			font-weight: bold;
+			margin-right: 20px;
         }
 		input{
 			position: relative;
-			}
+		}
 
         
         </style>
@@ -119,11 +124,10 @@
 		<div class="hero" id="hero">
         <p></p>
 			<p><img src="wholesomept.png" style = "display: inline; width:100%; max-width: 800px;"></p>
-			</br>
 			
             <div id="toHide" style="display: inline;">
-                <p style="text-align:right;"><i> This is a wholesome test to see how soft u are :></p>
-                <p><strong>Caution: This is not a bucket list. Completion of all items on this test will likely result in too much uwu.</strong></p>
+                <p style="text-align:right;"><i> This is a wholesome test to see how soft u are :></i></p>
+                <p style="display:block; max-width: 600px;"><strong>Caution: This is not a bucket list. Completion of all items on this test will likely result in too much uwu. c:</strong></p>
                 <br>
                 Click every item you do / have done. 
 			<p></p>
@@ -239,9 +243,9 @@
                 <input class="button" id="reset" type="submit" onclick="reset()" value="Reset">
             </div>
         </div> <!-- id = toHide -->
-        <div id="toShow" style="display: none;text-align:center;padding-top:40vh; padding-bottom:60vh; font-size:20px;">
+        <div id="toShow" style="display: none;text-align:center;padding-top:10vh; padding-bottom:20vh; font-size:25px;">
             <h2 id="test" style="padding-top:2vh">Your score:</h2>
-            <h1 id="score" style="padding-bottom:60vh;"></h1>
+            <h1 id="score" style="padding-bottom:20vh;"></h1>
         </div> <!-- id = toShow -->
         
 		</div> <!-- id = hero -->
