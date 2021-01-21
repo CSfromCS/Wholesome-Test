@@ -354,6 +354,7 @@
             var sinList = document.querySelectorAll('input[type="checkbox"]:checked');
             var sins = sinList.length;
             var purity = 100-sins;
+			console.log(purity);
             
             // Sends the score to Google Analytics
             <!-- ga('send', { -->
@@ -365,7 +366,7 @@
             <!-- }); -->
 			
 			gtag('event', 'answer', {
-				'score': purity
+				score: purity
 				});
 
             // Sends the individual values to Google Analytics
