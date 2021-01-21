@@ -305,9 +305,10 @@
                 <input class="button" id="reset" type="submit" onclick="reset()" value="Reset">
             </div>
         </div> <!-- id = toHide -->
-        <div id="toShow" style="display: none;text-align:center;padding-top:5vh; padding-bottom:20vh; font-size:25px;">
+        <div id="toShow" style="display: none;text-align:center;padding-top:5vh; padding-bottom:10vh; font-size:25px;">
             <h2 id="test" style="padding-top:2vh">Your score:</h2>
-            <h1 id="score" style="padding-bottom:20vh;"></h1>
+            <h1 id="score" style="padding-bottom:30vh;"></h1>
+			<p style="font-size: 12px;">A lower score means you are more wholesome uwu!</p>
         </div> <!-- id = toShow -->
         
 		</div> <!-- id = hero -->
@@ -484,6 +485,11 @@
 
             // Shows the score in the h1
             $('score').innerHTML = purity;
+			
+			if(purity == 0){
+				$('score').innerHTML = "u are too wholesome!<br><p style='font-size:20px;'>u r a blessing to the world, tysm.</p>";
+			
+			}
             
             // Shows the score and hides the checks
             $("toShow").style.display = "inline";
@@ -492,7 +498,10 @@
         
         // On click of the reset button: 
         function reset() {
-            location.reload();
+			var r = confirm("Are you sure you want to reset?");
+			if (r == true) {
+				location.reload();
+			}
         };
         </script>
 
