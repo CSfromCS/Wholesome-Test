@@ -23,15 +23,15 @@
 		
 		
 		<!-- Google Analytics -->
-		<script>
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		<!-- <script> -->
+		<!-- (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ -->
+		<!-- (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), -->
+		<!-- m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) -->
+		<!-- })(window,document,'script','https://www.google-analytics.com/analytics.js','ga'); -->
 
-		ga('create', 'UA-XXXXX-Y', 'auto');
-		ga('send', 'pageview');
-		</script>
+		<!-- ga('create', 'UA-XXXXX-Y', 'auto'); -->
+		<!-- ga('send', 'pageview'); -->
+		<!-- </script> -->
 		<!-- End Google Analytics -->
 
 		<!-- Google Tag Manager -->
@@ -117,7 +117,7 @@
 			position: relative
             text-align: center;
 			font-family: Verdana, Helvetica, Tahoma;
-			font-size: 16px;
+			font-size: 18px;
         }
         #list {
 			position: relative
@@ -138,13 +138,14 @@
         .button {
 			position: relative;
             text-align: center;
-            width: 100px;
+            width: 130px;
             border-radius: 20px;
             background-color: rgba(255, 119, 100, 0.3);
             color: rgb(0, 0, 5);
             left: 200px;
 			padding: 10px;
 			font-weight: bold;
+			font-size: 20px;
 			margin-right: 20px;
         }
 		input{
@@ -355,6 +356,19 @@
             var sins = sinList.length;
             var purity = 100-sins;
 			console.log(purity);
+			
+			
+            // Shows the score in the h1
+            $('score').innerHTML = purity;
+			
+			if(purity == 0){
+				$('score').innerHTML = "u are too wholesome!<br><p style='font-size:20px;'>u r a blessing to the world, tysm.</p>";
+			
+			}
+            
+            // Shows the score and hides the checks
+            $("toShow").style.display = "inline";
+            $("toHide").style.display = "none";
             
             // Sends the score to Google Analytics
             <!-- ga('send', { -->
@@ -483,17 +497,6 @@
 'q100': (document.getElementById('100').checked ? 1 : 0)
 				});
 
-            // Shows the score in the h1
-            $('score').innerHTML = purity;
-			
-			if(purity == 0){
-				$('score').innerHTML = "u are too wholesome!<br><p style='font-size:20px;'>u r a blessing to the world, tysm.</p>";
-			
-			}
-            
-            // Shows the score and hides the checks
-            $("toShow").style.display = "inline";
-            $("toHide").style.display = "none";
         };
         
         // On click of the reset button: 
