@@ -31,7 +31,7 @@
 		
         <!-- Title -->
         <title>Wholesome Purity Test</title>
-		<meta name="description" content="A wholesome purity test to see how soft you are! Take this for fun and to remind you of the wholesome activities you can do."/>
+		<meta name="description" content="A wholesome purity test to see how wholesome you are! Take this for fun and to remind you of the wholesome activities you can do."/>
         
         <!-- Favicon -->
         <link rel="icon" type="image/png" href="hearts.png"/>
@@ -51,7 +51,7 @@
 		<meta name="twitter:creator" content="@si_cs_">
 		<meta name="twitter:title"   content="Wholesome Purity Test">
 
-		<meta name="twitter:description" content="how soft are u? :>">
+		<meta name="twitter:description" content="how wholesome are u? :>">
 
 		<meta name="twitter:image" content="https://www.wholesometest.fun/banner.png">
 		<meta name="twitter:card"  content="summary_large_image">
@@ -154,7 +154,7 @@
 			<p><img src="wholesomept.png" style = "display: inline; width:100%; max-width: 800px;"></p>
 			
             <div id="toHide" style="display: inline;">
-                <p style="text-align:right;"><i> This is a wholesome test to see how soft u are :></i></p>
+                <p style="text-align:right;"><i> This is a wholesome test to see how wholesome u are :></i></p>
                 <p style="display:block; max-width: 600px;"><strong>Caution: This is not a bucket list. Completion of all items on this test will likely result in too much uwu. c:</strong></p>
                 <br>
                 Click every item you do / have done. 
@@ -272,7 +272,7 @@
         <div id="toShow" style="display: none;text-align:center;padding-top:5vh; padding-bottom:10vh; font-size:25px;">
             <h2 id="test" style="padding-top:2vh">Your score:</h2>
             <h1 id="score" style="padding-bottom:30vh;"></h1>
-			<p style="font-size: 12px;">A lower score means you are more wholesome uwu!</p>
+			<p style="font-size: 12px;">A higher score means you are more wholesome uwu!</p>
         </div> <!-- id = toShow -->
         
 		</div> <!-- id = hero -->
@@ -323,16 +323,16 @@
             // Calculates purity
             var sinList = document.querySelectorAll('input[type="checkbox"]:checked');
             var sins = sinList.length;
-            var purity = 100-sins;
+            // var purity = 100-sins;
+            var purity = sins;
 			console.log(purity);
 			
 			
             // Shows the score in the h1
             $('score').innerHTML = purity;
 			
-			if(purity == 0){
+			if(purity >= 80){
 				$('score').innerHTML = "u are too wholesome!<br><p style='font-size:20px;'>u r a blessing to the world, tysm.</p>";
-			
 			}
             
             // Shows the score and hides the checks
