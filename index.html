@@ -145,6 +145,10 @@
 	<!-- Purity Test 1 (link) -->
 	<!-- <meta http-equiv="origin-trial" content="A2shzsdPO+RKe83bUqT9oVkYwGZN6j9O7nrcOASNFPuQz8HefgVYb9qAqn6coNCSDIRtXoi6ybCrjEsYh3caFgIAAAB7eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MTM0OTU4NjgsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><link rel="preload" href="./f(2).txt" as="script"><script type="text/javascript" src="./f(2).txt"></script><link rel="preload" href="./f(3).txt" as="script"><script type="text/javascript" src="./f(3).txt"> -->
 	</script>
+
+
+	<!-- Firebase -->
+	<script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
 </head>
 
 <body>
@@ -378,7 +382,22 @@
 					</li>
 				</ol>
 
-				<input class="button" id="submit" type="submit" onclick="calculate()" value="Calculate">
+				<p style="text-align:center;">Nickname: <input type="text" id="name" placeholder="nickname"
+						style="text-align:center;" required></p>
+				<p style="text-align:center;">Age: <input type="number" id="age" placeholder="age" min="5" max="100"
+						style="text-align:center;" required></p>
+
+				<p style="text-align:center;">Gender:
+					<input type="radio" name="gender" id="gender" value="" style="display: none;">
+					<input type="radio" name="gender" id="gender" value="female">Female
+					<input type="radio" name="gender" id="gender" value="male">Male
+					<input type="radio" name="gender" id="gender" value="non-binary">Non-Binary
+					<input type="radio" name="gender" id="gender" value="others">Others
+
+				</p>
+				<br>
+
+				<input class="button" id="submit" type="submit" onclick="" value="Calculate">
 				<input class="button" id="reset" type="submit" onclick="reset()" value="Reset">
 			</div>
 		</div> <!-- id = toHide -->
@@ -405,10 +424,117 @@
 			type='text/javascript'>kofiwidget2.init('spare some coffee? :>', '#2ee8bd', 'P5P83AJGL'); kofiwidget2.draw();</script>
 	</div>
 
-	<script>
+	<script type="module">
+		var responses = {
+			'q1': (document.getElementById('1').checked ? 1 : 0),
+			'q2': (document.getElementById('2').checked ? 1 : 0),
+			'q3': (document.getElementById('3').checked ? 1 : 0),
+			'q4': (document.getElementById('4').checked ? 1 : 0),
+			'q5': (document.getElementById('5').checked ? 1 : 0),
+			'q6': (document.getElementById('6').checked ? 1 : 0),
+			'q7': (document.getElementById('7').checked ? 1 : 0),
+			'q8': (document.getElementById('8').checked ? 1 : 0),
+			'q9': (document.getElementById('9').checked ? 1 : 0),
+			'q10': (document.getElementById('10').checked ? 1 : 0),
+			'q11': (document.getElementById('11').checked ? 1 : 0),
+			'q12': (document.getElementById('12').checked ? 1 : 0),
+			'q13': (document.getElementById('13').checked ? 1 : 0),
+			'q14': (document.getElementById('14').checked ? 1 : 0),
+			'q15': (document.getElementById('15').checked ? 1 : 0),
+			'q16': (document.getElementById('16').checked ? 1 : 0),
+			'q17': (document.getElementById('17').checked ? 1 : 0),
+			'q18': (document.getElementById('18').checked ? 1 : 0),
+			'q19': (document.getElementById('19').checked ? 1 : 0),
+			'q20': (document.getElementById('20').checked ? 1 : 0),
+			'q21': (document.getElementById('21').checked ? 1 : 0),
+			'q22': (document.getElementById('22').checked ? 1 : 0),
+			'q23': (document.getElementById('23').checked ? 1 : 0),
+			'q24': (document.getElementById('24').checked ? 1 : 0),
+			'q25': (document.getElementById('25').checked ? 1 : 0),
+			'q26': (document.getElementById('26').checked ? 1 : 0),
+			'q27': (document.getElementById('27').checked ? 1 : 0),
+			'q28': (document.getElementById('28').checked ? 1 : 0),
+			'q29': (document.getElementById('29').checked ? 1 : 0),
+			'q30': (document.getElementById('30').checked ? 1 : 0),
+			'q31': (document.getElementById('31').checked ? 1 : 0),
+			'q32': (document.getElementById('32').checked ? 1 : 0),
+			'q33': (document.getElementById('33').checked ? 1 : 0),
+			'q34': (document.getElementById('34').checked ? 1 : 0),
+			'q35': (document.getElementById('35').checked ? 1 : 0),
+			'q36': (document.getElementById('36').checked ? 1 : 0),
+			'q37': (document.getElementById('37').checked ? 1 : 0),
+			'q38': (document.getElementById('38').checked ? 1 : 0),
+			'q39': (document.getElementById('39').checked ? 1 : 0),
+			'q40': (document.getElementById('40').checked ? 1 : 0),
+			'q41': (document.getElementById('41').checked ? 1 : 0),
+			'q42': (document.getElementById('42').checked ? 1 : 0),
+			'q43': (document.getElementById('43').checked ? 1 : 0),
+			'q44': (document.getElementById('44').checked ? 1 : 0),
+			'q45': (document.getElementById('45').checked ? 1 : 0),
+			'q46': (document.getElementById('46').checked ? 1 : 0),
+			'q47': (document.getElementById('47').checked ? 1 : 0),
+			'q48': (document.getElementById('48').checked ? 1 : 0),
+			'q49': (document.getElementById('49').checked ? 1 : 0),
+			'q50': (document.getElementById('50').checked ? 1 : 0),
+			'q51': (document.getElementById('51').checked ? 1 : 0),
+			'q52': (document.getElementById('52').checked ? 1 : 0),
+			'q53': (document.getElementById('53').checked ? 1 : 0),
+			'q54': (document.getElementById('54').checked ? 1 : 0),
+			'q55': (document.getElementById('55').checked ? 1 : 0),
+			'q56': (document.getElementById('56').checked ? 1 : 0),
+			'q57': (document.getElementById('57').checked ? 1 : 0),
+			'q58': (document.getElementById('58').checked ? 1 : 0),
+			'q59': (document.getElementById('59').checked ? 1 : 0),
+			'q60': (document.getElementById('60').checked ? 1 : 0),
+			'q61': (document.getElementById('61').checked ? 1 : 0),
+			'q62': (document.getElementById('62').checked ? 1 : 0),
+			'q63': (document.getElementById('63').checked ? 1 : 0),
+			'q64': (document.getElementById('64').checked ? 1 : 0),
+			'q65': (document.getElementById('65').checked ? 1 : 0),
+			'q66': (document.getElementById('66').checked ? 1 : 0),
+			'q67': (document.getElementById('67').checked ? 1 : 0),
+			'q68': (document.getElementById('68').checked ? 1 : 0),
+			'q69': (document.getElementById('69').checked ? 1 : 0),
+			'q70': (document.getElementById('70').checked ? 1 : 0),
+			'q71': (document.getElementById('71').checked ? 1 : 0),
+			'q72': (document.getElementById('72').checked ? 1 : 0),
+			'q73': (document.getElementById('73').checked ? 1 : 0),
+			'q74': (document.getElementById('74').checked ? 1 : 0),
+			'q75': (document.getElementById('75').checked ? 1 : 0),
+			'q76': (document.getElementById('76').checked ? 1 : 0),
+			'q77': (document.getElementById('77').checked ? 1 : 0),
+			'q78': (document.getElementById('78').checked ? 1 : 0),
+			'q79': (document.getElementById('79').checked ? 1 : 0),
+			'q80': (document.getElementById('80').checked ? 1 : 0),
+			'q81': (document.getElementById('81').checked ? 1 : 0),
+			'q82': (document.getElementById('82').checked ? 1 : 0),
+			'q83': (document.getElementById('83').checked ? 1 : 0),
+			'q84': (document.getElementById('84').checked ? 1 : 0),
+			'q85': (document.getElementById('85').checked ? 1 : 0),
+			'q86': (document.getElementById('86').checked ? 1 : 0),
+			'q87': (document.getElementById('87').checked ? 1 : 0),
+			'q88': (document.getElementById('88').checked ? 1 : 0),
+			'q89': (document.getElementById('89').checked ? 1 : 0),
+			'q90': (document.getElementById('90').checked ? 1 : 0),
+			'q91': (document.getElementById('91').checked ? 1 : 0),
+			'q92': (document.getElementById('92').checked ? 1 : 0),
+			'q93': (document.getElementById('93').checked ? 1 : 0),
+			'q94': (document.getElementById('94').checked ? 1 : 0),
+			'q95': (document.getElementById('95').checked ? 1 : 0),
+			'q96': (document.getElementById('96').checked ? 1 : 0),
+			'q97': (document.getElementById('97').checked ? 1 : 0),
+			'q98': (document.getElementById('98').checked ? 1 : 0),
+			'q99': (document.getElementById('99').checked ? 1 : 0),
+			'q100': (document.getElementById('100').checked ? 1 : 0)
+		};
+		console.log(responses);
+		var responses2 = {}
+
+
 		// Import the functions you need from the SDKs you need
-		import { initializeApp } from "firebase/app";
-		import { getAnalytics } from "firebase/analytics";
+		import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
+		import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-analytics.js";
+		import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js";
 		// TODO: Add SDKs for Firebase products that you want to use
 		// https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -421,14 +547,64 @@
 			storageBucket: "wholesometest-f1403.appspot.com",
 			messagingSenderId: "454651695005",
 			appId: "1:454651695005:web:a8dd3398addaa973852974",
-			measurementId: "G-S45944MJVK"
+			measurementId: "G-S45944MJVK",
+			databaseURL: "https://wholesometest-f1403-default-rtdb.asia-southeast1.firebasedatabase.app/"
 		};
 
 		// Initialize Firebase
 		const app = initializeApp(firebaseConfig);
 		const analytics = getAnalytics(app);
 
+		const db = getDatabase();
 
+		var submitBtn = document.querySelector('#submit');
+		submitBtn.addEventListener('click', insertData);
+
+		function insertData() {
+
+			for (var i = 1; i <= 100; i++) {
+				// get the value of the checkbox
+				var value = document.getElementById(i).checked ? 1 : 0;
+				// add the value to the object
+				responses2[i] = value;
+			}
+			console.log(responses2);
+
+			var time = new Date();
+			var timestamp = time.valueOf();
+			var obj = {};
+			obj['timestamp'] = time.toLocaleDateString() + " " + time.toLocaleTimeString();
+			obj['responses'] = responses2;
+			obj['name'] = document.getElementById('name').value;
+			obj['age'] = document.getElementById('age').value;
+
+			var genderInput = document.querySelector('input[name="gender"]:checked')
+			if (genderInput != null) {
+				obj['gender'] = genderInput.value;
+			}
+
+			if (obj['name'] == "") {
+				alert("Please enter a nickname.")
+				return;
+			} else if (obj['age'] == "") {
+				alert("Please enter your age.")
+				return;
+			} else if (genderInput == null) {
+				alert("Please enter your gender.")
+				return;
+			}
+
+			// app.database().ref('/').update(obj);
+
+			set(ref(db, "Responses/" + timestamp + " " + obj['timestamp']), obj).then(() => {
+				// alert("Submitted.")
+				calculate(obj['name']);
+			})
+		}
+
+	</script>
+
+	<script>
 		function $(x) { return document.getElementById(x); }
 		// IDs
 		// toHide: Everything that needs to be hidden when score is shown
@@ -457,18 +633,19 @@
 		}
 
 		const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100];
-		<!-- const order = shuffle(nums); -->
+		//<!-- const order = shuffle(nums); -->
 
 
 
 		// On click of the submit button: 
-		function calculate() {
+		function calculate(name) {
 			console.log("Calculate is pressed")
 			// Calculates purity
 			var sinList = document.querySelectorAll('input[type="checkbox"]:checked');
 			var sins = sinList.length;
 			// var purity = 100-sins;
 			var purity = sins;
+			purity = name + "<br>" + purity
 			console.log(purity);
 
 
@@ -488,120 +665,11 @@
 				'score': purity
 			});
 
-			var responses = {
-				'q1': (document.getElementById('1').checked ? 1 : 0),
-				'q2': (document.getElementById('2').checked ? 1 : 0),
-				'q3': (document.getElementById('3').checked ? 1 : 0),
-				'q4': (document.getElementById('4').checked ? 1 : 0),
-				'q5': (document.getElementById('5').checked ? 1 : 0),
-				'q6': (document.getElementById('6').checked ? 1 : 0),
-				'q7': (document.getElementById('7').checked ? 1 : 0),
-				'q8': (document.getElementById('8').checked ? 1 : 0),
-				'q9': (document.getElementById('9').checked ? 1 : 0),
-				'q10': (document.getElementById('10').checked ? 1 : 0),
-				'q11': (document.getElementById('11').checked ? 1 : 0),
-				'q12': (document.getElementById('12').checked ? 1 : 0),
-				'q13': (document.getElementById('13').checked ? 1 : 0),
-				'q14': (document.getElementById('14').checked ? 1 : 0),
-				'q15': (document.getElementById('15').checked ? 1 : 0),
-				'q16': (document.getElementById('16').checked ? 1 : 0),
-				'q17': (document.getElementById('17').checked ? 1 : 0),
-				'q18': (document.getElementById('18').checked ? 1 : 0),
-				'q19': (document.getElementById('19').checked ? 1 : 0),
-				'q20': (document.getElementById('20').checked ? 1 : 0),
-				'q21': (document.getElementById('21').checked ? 1 : 0),
-				'q22': (document.getElementById('22').checked ? 1 : 0),
-				'q23': (document.getElementById('23').checked ? 1 : 0),
-				'q24': (document.getElementById('24').checked ? 1 : 0),
-				'q25': (document.getElementById('25').checked ? 1 : 0),
-				'q26': (document.getElementById('26').checked ? 1 : 0),
-				'q27': (document.getElementById('27').checked ? 1 : 0),
-				'q28': (document.getElementById('28').checked ? 1 : 0),
-				'q29': (document.getElementById('29').checked ? 1 : 0),
-				'q30': (document.getElementById('30').checked ? 1 : 0),
-				'q31': (document.getElementById('31').checked ? 1 : 0),
-				'q32': (document.getElementById('32').checked ? 1 : 0),
-				'q33': (document.getElementById('33').checked ? 1 : 0),
-				'q34': (document.getElementById('34').checked ? 1 : 0),
-				'q35': (document.getElementById('35').checked ? 1 : 0),
-				'q36': (document.getElementById('36').checked ? 1 : 0),
-				'q37': (document.getElementById('37').checked ? 1 : 0),
-				'q38': (document.getElementById('38').checked ? 1 : 0),
-				'q39': (document.getElementById('39').checked ? 1 : 0),
-				'q40': (document.getElementById('40').checked ? 1 : 0),
-				'q41': (document.getElementById('41').checked ? 1 : 0),
-				'q42': (document.getElementById('42').checked ? 1 : 0),
-				'q43': (document.getElementById('43').checked ? 1 : 0),
-				'q44': (document.getElementById('44').checked ? 1 : 0),
-				'q45': (document.getElementById('45').checked ? 1 : 0),
-				'q46': (document.getElementById('46').checked ? 1 : 0),
-				'q47': (document.getElementById('47').checked ? 1 : 0),
-				'q48': (document.getElementById('48').checked ? 1 : 0),
-				'q49': (document.getElementById('49').checked ? 1 : 0),
-				'q50': (document.getElementById('50').checked ? 1 : 0),
-				'q51': (document.getElementById('51').checked ? 1 : 0),
-				'q52': (document.getElementById('52').checked ? 1 : 0),
-				'q53': (document.getElementById('53').checked ? 1 : 0),
-				'q54': (document.getElementById('54').checked ? 1 : 0),
-				'q55': (document.getElementById('55').checked ? 1 : 0),
-				'q56': (document.getElementById('56').checked ? 1 : 0),
-				'q57': (document.getElementById('57').checked ? 1 : 0),
-				'q58': (document.getElementById('58').checked ? 1 : 0),
-				'q59': (document.getElementById('59').checked ? 1 : 0),
-				'q60': (document.getElementById('60').checked ? 1 : 0),
-				'q61': (document.getElementById('61').checked ? 1 : 0),
-				'q62': (document.getElementById('62').checked ? 1 : 0),
-				'q63': (document.getElementById('63').checked ? 1 : 0),
-				'q64': (document.getElementById('64').checked ? 1 : 0),
-				'q65': (document.getElementById('65').checked ? 1 : 0),
-				'q66': (document.getElementById('66').checked ? 1 : 0),
-				'q67': (document.getElementById('67').checked ? 1 : 0),
-				'q68': (document.getElementById('68').checked ? 1 : 0),
-				'q69': (document.getElementById('69').checked ? 1 : 0),
-				'q70': (document.getElementById('70').checked ? 1 : 0),
-				'q71': (document.getElementById('71').checked ? 1 : 0),
-				'q72': (document.getElementById('72').checked ? 1 : 0),
-				'q73': (document.getElementById('73').checked ? 1 : 0),
-				'q74': (document.getElementById('74').checked ? 1 : 0),
-				'q75': (document.getElementById('75').checked ? 1 : 0),
-				'q76': (document.getElementById('76').checked ? 1 : 0),
-				'q77': (document.getElementById('77').checked ? 1 : 0),
-				'q78': (document.getElementById('78').checked ? 1 : 0),
-				'q79': (document.getElementById('79').checked ? 1 : 0),
-				'q80': (document.getElementById('80').checked ? 1 : 0),
-				'q81': (document.getElementById('81').checked ? 1 : 0),
-				'q82': (document.getElementById('82').checked ? 1 : 0),
-				'q83': (document.getElementById('83').checked ? 1 : 0),
-				'q84': (document.getElementById('84').checked ? 1 : 0),
-				'q85': (document.getElementById('85').checked ? 1 : 0),
-				'q86': (document.getElementById('86').checked ? 1 : 0),
-				'q87': (document.getElementById('87').checked ? 1 : 0),
-				'q88': (document.getElementById('88').checked ? 1 : 0),
-				'q89': (document.getElementById('89').checked ? 1 : 0),
-				'q90': (document.getElementById('90').checked ? 1 : 0),
-				'q91': (document.getElementById('91').checked ? 1 : 0),
-				'q92': (document.getElementById('92').checked ? 1 : 0),
-				'q93': (document.getElementById('93').checked ? 1 : 0),
-				'q94': (document.getElementById('94').checked ? 1 : 0),
-				'q95': (document.getElementById('95').checked ? 1 : 0),
-				'q96': (document.getElementById('96').checked ? 1 : 0),
-				'q97': (document.getElementById('97').checked ? 1 : 0),
-				'q98': (document.getElementById('98').checked ? 1 : 0),
-				'q99': (document.getElementById('99').checked ? 1 : 0),
-				'q100': (document.getElementById('100').checked ? 1 : 0)
-			};
 
 
-			gtag('event', 'responses', responses);
+			// gtag('event', 'responses', responses);
 
 			// Firebase (Oct 2023)
-			var timestamp = new Date().valueOf();
-			var obj = {};
-			obj['timestamp'] = id;
-			obj['responses'] = responses;
-
-			app.database().ref('/').update(obj);
-
 		};
 
 		// On click of the reset button: 
