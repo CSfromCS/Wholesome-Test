@@ -542,7 +542,7 @@
 
 			// app.database().ref('/').update(obj);
 
-			set(ref(db, "Responses/" + timestamp + " " + obj['timestamp']), obj).then(() => {
+			set(ref(db, "Responses/" + timestamp + " " + obj['name']), obj).then(() => {
 				// alert("Submitted.")
 				calculate(obj['name']);
 			})
